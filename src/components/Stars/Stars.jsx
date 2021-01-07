@@ -4,10 +4,13 @@ import shortid from 'shortid';
 
 function Stars(props) {
     const { count } = props;
-
+    const isValid = count >= 1 && count <= 5;
+	if (!isValid) {
+		return null;
+	}
     return (
         <ul className="card-body-stars">
-            {count > 0 && count < 6 && [...Array(count)].map((e, i) => <Star key={shortid.generate()}/>)}
+            {[...Array(count)].map((e, i) => <Star key={shortid.generate()}/>)}
         </ul>
     )
 
